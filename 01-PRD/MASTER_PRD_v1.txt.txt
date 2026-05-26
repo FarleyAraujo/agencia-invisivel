@@ -1,0 +1,643 @@
+=============================================
+DOCUMENTO OFICIAL DO PROJETO
+VERSÃO: V1
+STATUS: ATIVO
+
+NÃO ALTERAR SEM REVISÃO
+
+Este documento é a fonte oficial do projeto.
+Mudanças arquiteturais devem ser registradas.
+
+Última atualização:
+[preencher data]
+
+=============================================
+
+PROJETO: AGÊNCIA IA DE ATENDIMENTO INVISÍVEL
+
+Versão: Planejamento Inicial V1
+Objetivo: Auditoria estratégica externa
+
+CONTEXTO DO FUNDADOR
+
+Perfil:
+
+Forte experiência comercial
+Já vendeu alto volume (até centenas de milhares/mês)
+Conhecimento técnico baixo em programação
+Deseja construir empresa de IA focada em atendimento
+Não deseja aprender programação profunda
+Vai operar em modelo "vibe coding"
+Desenvolvimento será feito por IA
+Inicialmente utilizará a ECO FONTE como laboratório
+Objetivo principal: vender para clientes externos com alta demanda de WhatsApp
+
+Mercado-alvo inicial:
+
+energia solar
+clínicas
+imobiliárias
+oficinas
+empresas de alto volume de mensagens
+negócios que perdem clientes por demora no atendimento
+VISÃO DO PRODUTO
+
+Construir uma empresa que implementa IA para atendimento humanizado no WhatsApp.
+
+Objetivo:
+
+Cliente conversa e não percebe que fala com IA.
+
+Características:
+
+memória
+contexto
+linguagem humana
+qualificação
+recuperação de leads
+agendamento
+pós-venda
+múltiplos agentes
+evolução contínua
+
+Posicionamento:
+
+NÃO vender:
+
+"chatbot"
+
+Vender:
+
+"equipe IA que trabalha 24h"
+
+ou:
+
+"paramos sua empresa de perder clientes"
+
+ou:
+
+"seus vendedores recebem apenas oportunidades prontas"
+
+MODELO COMERCIAL DEFINIDO
+
+Modelo escolhido:
+
+Implementação + recorrência
+
+Estrutura:
+
+Implantação:
+
+R$2.000–15.000+
+
+Mensalidade:
+
+R$500–3.000+
+
+Possíveis planos:
+
+Start:
+
+atendimento
+FAQ
+
+Pro:
+
+SDR
+CRM
+qualificação
+
+Elite:
+
+múltiplos agentes
+memória
+recuperação
+dashboards
+DECISÃO ESTRATÉGICA IMPORTANTE
+
+Modelo escolhido:
+
+PLATAFORMA CENTRAL MULTIEMPRESA
+
+NÃO:
+
+1 cliente = 1 sistema
+
+SIM:
+
+1 sistema central atende vários clientes
+
+Motivos:
+
+escala
+menor custo
+maior margem
+crescimento estilo SaaS
+
+Funcionamento:
+
+Empresa A
+↓
+WhatsApp
+↓
+Plataforma central
+
+Empresa B
+↓
+WhatsApp
+↓
+Plataforma central
+
+FERRAMENTAS AVALIADAS
+
+Pergunta inicial:
+
+Antigravity vs Claude vs Manus
+
+Conclusão:
+
+Manus:
+Descartado como núcleo principal
+
+Motivos:
+
+menos ideal para arquitetura complexa
+
+Antigravity:
+Será usado como executor/desenvolvedor
+
+Claude:
+Usado como cérebro estratégico
+
+Conclusão operacional:
+
+Claude:
+pensamento
+arquitetura
+prompts
+
+Antigravity:
+execução
+desenvolvimento
+vibe coding
+
+PROCESSO DE TRABALHO DEFINIDO
+
+Fluxo:
+
+Usuário conversa com ChatGPT
+
+↓
+
+ChatGPT cria:
+
+arquitetura
+prompts
+requisitos
+Sprints
+documentação
+
+↓
+
+Usuário leva para Antigravity
+
+↓
+
+Antigravity desenvolve
+
+Regra:
+
+NUNCA pedir:
+
+"Crie minha plataforma inteira"
+
+Sempre dividir:
+
+Sprint 1
+
+Sprint 2
+
+Sprint 3
+
+etc.
+
+STACK OFICIAL DEFINIDO
+
+Infraestrutura:
+
+VPS própria
+
+Sistema:
+
+Ubuntu Server
+
+Gerenciamento:
+
+Docker
+
+Portainer
+
+Motor:
+
+n8n
+
+WhatsApp:
+
+Evolution API
+
+Banco:
+
+Supabase
+
+PostgreSQL
+
+IA:
+
+Claude
+
+OpenAI API
+
+Monitoramento:
+
+Langfuse
+
+HOSPEDAGEM
+
+Decisão:
+
+Começar barato
+
+Escalar depois
+
+Servidor inicial:
+
+4vCPU
+
+8GB RAM
+
+Ubuntu
+
+Objetivo:
+
+laboratório + ECO FONTE + primeiros clientes
+
+Escala futura:
+
+migrar para VPS robusta
+
+Estratégia:
+
+usar Docker para facilitar migração
+
+ESTRUTURA WHATSAPP
+
+Decisão:
+
+1 Evolution API
+
+Múltiplas sessões
+
+Exemplo:
+
+Eco Fonte → sessão 1
+
+Clínica → sessão 2
+
+Imobiliária → sessão 3
+
+Motivos:
+
+menor custo
+mais simples
+escalável
+ARQUITETURA GERAL DEFINIDA
+
+Cliente
+
+↓
+
+WhatsApp
+
+↓
+
+Evolution API
+
+↓
+
+n8n
+
+↓
+
+identificar empresa
+
+↓
+
+buscar memória
+
+↓
+
+buscar prompt
+
+↓
+
+consultar IA
+
+↓
+
+responder
+
+↓
+
+salvar histórico
+
+↓
+
+atualizar CRM
+
+↓
+
+agendar
+
+ESTRUTURA DO BANCO
+
+Tabela:
+
+companies
+
+Campos:
+
+id
+
+nome_empresa
+
+segmento
+
+whatsapp
+
+plano
+
+status
+
+data_criacao
+
+Tabela:
+
+contacts
+
+Campos:
+
+id
+
+company_id
+
+nome
+
+telefone
+
+email
+
+cidade
+
+origem
+
+primeira_entrada
+
+ultimo_contato
+
+estagio
+
+Tabela:
+
+messages
+
+Campos:
+
+id
+
+company_id
+
+contact_id
+
+mensagem
+
+origem
+
+data_hora
+
+Tabela:
+
+customer_memory
+
+Campos:
+
+id
+
+contact_id
+
+tipo
+
+informacao
+
+importancia
+
+Exemplos:
+
+objeção
+
+perfil
+
+interesse
+
+Tabela:
+
+sessions
+
+Campos:
+
+id
+
+contact_id
+
+inicio
+
+fim
+
+status
+
+Status:
+
+aberto
+
+qualificação
+
+agendado
+
+encerrado
+
+vendido
+
+Tabela:
+
+appointments
+
+Campos:
+
+id
+
+contact_id
+
+data
+
+hora
+
+consultor
+
+status
+
+Tabela:
+
+prompts
+
+Campos:
+
+id
+
+company_id
+
+nome
+
+prompt_sistema
+
+versao
+
+Tabela:
+
+knowledge_base
+
+Campos:
+
+id
+
+company_id
+
+pergunta
+
+resposta
+
+categoria
+
+LABORATÓRIO ECO FONTE
+
+Primeira operação interna:
+
+Lead entra
+
+↓
+
+IA responde
+
+↓
+
+Pergunta:
+
+Casa ou empresa
+
+Valor da conta
+
+Cidade
+
+↓
+
+Salva
+
+↓
+
+Qualifica
+
+↓
+
+Agenda
+
+↓
+
+Entrega consultor
+
+Objetivo:
+
+Não criar sistema complexo inicialmente
+
+Evitar:
+
+autoevolução
+múltiplos agentes
+voz
+memória emocional avançada
+FILOSOFIA DE DESENVOLVIMENTO
+
+Fundador NÃO será programador.
+
+Função:
+
+CEO
+
+Arquiteto
+
+Estratégia
+
+Vendas
+
+IA será:
+
+CTO
+
+Programador
+
+Executor
+
+ROADMAP PRELIMINAR
+
+Sprint 1:
+
+Infraestrutura
+
+Ubuntu
+Docker
+Portainer
+PostgreSQL
+Evolution
+n8n
+
+Sprint 2:
+
+Banco multiempresa
+
+Sprint 3:
+
+Receber mensagens
+
+Sprint 4:
+
+Memória
+
+Sprint 5:
+
+Integração IA
+
+Sprint 6:
+
+CRM
+
+Sprint 7:
+
+Agendamento
+
+Sprint 8:
+
+Monitoramento
+
+=============================================
+
+STATUS ATUAL:
+Sprint 01 — Em planejamento
+
+=============================================

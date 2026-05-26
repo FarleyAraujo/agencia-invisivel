@@ -1,0 +1,21 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    volumes:
+      # Permite o Portainer gerenciar os containers do Docker
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Salva dados do Portainer (usuários, configs)
+      - portainer_data:/data
+    networks:
+      - proxy
+    # Porta 9000 NÃO é exposta publicamente
+    # O acesso será feito pelo Nginx Proxy Manager via subdomínio
+
+volumes:
+  portainer_data:
+
+networks:
+  proxy:
+    external: true

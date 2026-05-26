@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      # Variáveis carregadas do arquivo .env
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      # Salva o banco de dados fora do container (CRÍTICO — sem isso, perde tudo)
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - proxy
+    # Porta 5432 NÃO é exposta publicamente (segurança)
+    # Outros containers acessam pelo nome: postgres:5432
+
+volumes:
+  postgres_data:
+
+networks:
+  proxy:
+    external: true

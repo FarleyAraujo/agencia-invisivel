@@ -1,0 +1,26 @@
+services:
+  npm:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    ports:
+      # Porta HTTP (necessária para gerar SSL)
+      - "80:80"
+      # Porta HTTPS (tráfego seguro)
+      - "443:443"
+      # Porta do painel de administração (temporária, depois fecha no firewall)
+      - "81:81"
+    volumes:
+      # Salva configurações fora do container (sobrevive a reinicializações)
+      - npm_data:/data
+      - npm_letsencrypt:/etc/letsencrypt
+    networks:
+      - proxy
+
+volumes:
+  npm_data:
+  npm_letsencrypt:
+
+networks:
+  proxy:
+    external: true

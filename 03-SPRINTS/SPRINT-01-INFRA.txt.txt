@@ -1,0 +1,54 @@
+OBJETIVO:
+
+Subir infraestrutura inicial da plataforma SaaS multiempresa.
+
+META:
+
+Criar a fundação técnica que suportará:
+- vários clientes
+- múltiplos WhatsApps
+- IA
+- memória
+- CRM
+
+COMPONENTES:
+
+1. Ubuntu Server (Contabo VPS S — 8GB RAM)
+2. Docker + Docker Compose
+3. Nginx Proxy Manager (proxy reverso + SSL)
+4. Portainer (gerenciador visual de containers)
+5. PostgreSQL 16 (banco de dados)
+
+DECISÕES TOMADAS:
+
+- Servidor: Contabo VPS S (~R$30/mês)
+- Domínio: Registro.br (.com.br)
+- DNS: Cloudflare (grátis)
+- Proxy: Nginx Proxy Manager
+- Email SSL: Gmail/Outlook pessoal
+
+SUBDOMÍNIOS:
+
+- npm.seudominio.com.br → Nginx Proxy Manager
+- portainer.seudominio.com.br → Portainer
+
+ORDEM DE INSTALAÇÃO:
+
+1. Docker + Docker Compose
+2. Rede Docker "proxy"
+3. Nginx Proxy Manager
+4. Portainer
+5. PostgreSQL
+
+ARQUIVOS CRIADOS:
+
+- 06-INFRA/.env.example
+- 06-INFRA/docker-compose/nginx-proxy-manager/docker-compose.yml
+- 06-INFRA/docker-compose/portainer/docker-compose.yml
+- 06-INFRA/docker-compose/postgresql/docker-compose.yml
+- 06-INFRA/scripts/setup-server.sh
+- 06-INFRA/GUIA-PASSO-A-PASSO.md
+
+STATUS:
+
+ARQUIVOS PRONTOS — AGUARDANDO EXECUÇÃO NO SERVIDOR
