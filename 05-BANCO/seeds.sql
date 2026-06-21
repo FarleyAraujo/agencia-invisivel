@@ -4,7 +4,7 @@ TRUNCATE TABLE companies, contacts, messages, customer_memory, sessions, appoint
 
 -- 1. Inserir Empresa de Teste (Tenante Eco Fonte)
 INSERT INTO companies (nome_empresa, segmento, whatsapp, plano, status)
-VALUES ('Eco Fonte', 'Energia Solar', '+5511999999999', 'Pro', 'ativo');
+VALUES ('Eco Fonte', 'Energia Solar', '+5511999999999', 'pro', 'ativo');
 
 -- 2. Inserir Prompt do Sistema para a Eco Fonte
 INSERT INTO prompts (company_id, nome, prompt_sistema)
