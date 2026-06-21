@@ -1,0 +1,27 @@
+OBJETIVO:
+Criar a estrutura do banco de dados PostgreSQL multiempresa (multi-tenant) com suporte a UUID.
+
+META:
+Garantir que todas as tabelas de negócio estejam criadas e prontas para receber dados do WhatsApp e da inteligência artificial, mantendo o isolamento de dados de múltiplos clientes.
+
+TABELAS CRIADAS:
+1. companies (dados das empresas clientes)
+2. contacts (leads e contatos da agenda/CRM)
+3. messages (histórico completo de conversas)
+4. customer_memory (fatos e preferências extraídos dos clientes)
+5. sessions (sessões de chat e controle de estágios)
+6. appointments (agendamentos de reuniões/consultas)
+7. prompts (instruções e personalidades de cada agente de IA)
+8. knowledge_base (base de conhecimento local/FAQ)
+
+DECISÕES TOMADAS:
+- Identificadores Únicos Universais (UUID) para chaves primárias e relacionamentos (Foreign Keys).
+- Criação de índices específicos em chaves mais consultadas para otimizar leitura futura.
+
+ARQUIVOS CRIADOS:
+- 05-BANCO/schema.sql
+- 05-BANCO/seeds.sql
+- 06-INFRA/scripts/backup-server.sh
+
+STATUS:
+CONCLUÍDO COM SUCESSO E TESTADO NO CONTAINER POSTGRESQL DO SERVIDOR
