@@ -1,0 +1,31 @@
+# 06-INFRA/docker-compose/evolution-api/docker-compose.yml
+services:
+  evolution-api:
+    image: evoapicloud/evolution-api:latest
+    container_name: evolution-api
+    restart: unless-stopped
+    environment:
+      # URL pública onde a API estará acessível (essencial para webhooks do WhatsApp)
+      - SERVER_URL=https://api.${DOMINIO}
+      - SERVER_PORT=8080
+      
+      # Autenticação de Segurança por API Key
+      - AUTHENTICATION_TYPE=apikey
+      - AUTHENTICATION_API_KEY=${EVOLUTION_API_KEY}
+      
+      # Conexão com o Banco de Dados PostgreSQL (mesmo container, schema isolado)
+      - DATABASE_ENABLED=true
+      - DATABASE_PROVIDER=postgresql
+      - DATABASE_CONNECTION_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=evolution
+      - DATABASE_CONNECTION_CLIENT_NAME=evolution
+      
+      # Desativa cache redis local para economizar memória RAM da VPS
+      - CACHE_REDIS_ENABLED=false
+    networks:
+      - proxy
+    # Nenhuma porta é exposta publicamente por segurança.
+    # O acesso externo será feito exclusivamente via Nginx Proxy Manager.
+
+networks:
+  proxy:
+    external: true
